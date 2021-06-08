@@ -10,5 +10,13 @@ function signup(e) {
 
     }
     console.log(signupDetails)
-    axios.post('http://localhost:3000/user/signup',signupDetails)
+    axios.post('http://localhost:3000/user/signup',signupDetails).then(response => {
+        if(response.status === 201){
+            window.location.href = "../Login/login.html" // change the page on successful login
+        } else {
+            throw new Error('Failed to login')
+        }
+    }).catch(err => {
+        document.body.innerHTML += `<div style="color:red;">${err} <div>`;
+    })
 }
