@@ -21,3 +21,7 @@ function login(e) {
         document.body.innerHTML += `<div style="color:red;">${err} <div>`;
     })
 }
+
+function forgotpassword() {
+    window.location.href = "../ForgotPassword/index.html"
+}
