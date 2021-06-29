@@ -26,8 +26,7 @@ window.addEventListener('load', ()=> {
     axios.get('http://localhost:3000/user/getexpenses', { headers: {"Authorization" : token} }).then(response => {
         if(response.status === 200){
             response.data.expenses.forEach(expense => {
-
-                addNewExpense(expense);
+                addNewExpensetoUI(expense);
             })
         } else {
             throw new Error();
@@ -68,6 +67,25 @@ function removeExpensefromUI(expenseid){
     const expenseElemId = `expense-${expenseid}`;
     document.getElementById(expenseElemId).remove();
 }
+function download(){
+    axios.get('http://localhost:3000/user/download', { headers: {"Authorization" : token} })
+    .then((response) => {
+        if(response.status === 201){
+            //the bcakend is essentially sending a download link
+            //  which if we open in browser, the file would download
+            var a = document.createElement("a");
+            a.href = response.data.fileUrl;
+            a.download = 'myexpense.csv';
+            a.click();
+        } else {
+            throw new Error(response.data.message)
+        }
+
+    })
+    .catch((err) => {
+        showError(err)
+    });
+}
 
 
 
@@ -77,11 +95,11 @@ document.getElementById('rzp-button1').onclick = async function (e) {
     var options =
     {
      "key": response.data.key_id, // Enter the Key ID generated from the Dashboard
-     "name": "Test Company",
+     "name": "YAV Technology",
      "order_id": response.data.order.id, // For one time payment
      "prefill": {
-       "name": "Test User",
-       "email": "test.user@example.com",
+       "name": "Yash Prasad",
+       "email": "prasadyash2411@gmail.com",
        "contact": "7003442036"
      },
      "theme": {
