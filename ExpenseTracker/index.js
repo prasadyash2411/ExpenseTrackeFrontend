@@ -5,14 +5,15 @@ function addNewExpense(e){
         expenseamount: e.target.expenseamount.value,
         description: e.target.description.value,
         category: e.target.category.value,
+        orderId: e.target.orderId.value
 
     }
     console.log(expenseDetails)
     // const token  = localStorage.getItem('token')
-    axios.post('https://crudcrud.com/api/e1fa1dda155048b4a77d77c2e3471d82/products',expenseDetails )
+    axios.post('https://crudcrud.com/api/e96aba2f4fb04bc4a3e7b69f4dddbd14/orders',expenseDetails )
         .then((response) => {
-    localStorage.setItem(response.data._id, JSON.stringify(expenseDetails))
-    console.log(response)
+    localStorage.setItem(expenseDetails.orderId, JSON.stringify(expenseDetails))
+    
     addNewExpensetoUI(response.data);
 
      }).catch(err => showError(err))
@@ -21,9 +22,9 @@ function addNewExpense(e){
 
 
 window.addEventListener('DOMContentLoaded', ()=> {
-    axios.get('https://crudcrud.com/api/e1fa1dda155048b4a77d77c2e3471d82/products')
+    axios.get('http://localhost:3000/expense/getexpenses')
     .then(response => {
-            response.data.forEach(expense => {
+            response.data.expenses.forEach(expense => {
 
                 addNewExpensetoUI(expense);
             })
@@ -34,19 +35,18 @@ window.addEventListener('DOMContentLoaded', ()=> {
 
 function addNewExpensetoUI(expense){
     const parentElement = document.getElementById(expense.category);
-    const expenseElemId = `expense-${expense._id}`;
+    const expenseElemId = `expense-${expense.orderId}`;
     parentElement.innerHTML += `
         <li id=${expenseElemId}>
             ${expense.expenseamount} - ${expense.category} - ${expense.description}
-            <button onclick='deleteExpense("${expense._id}")'>
+            <button onclick='deleteExpense(event, ${expense.orderId})'>
                 Delete Product
             </button>
         </li>`
 }
 
-function deleteExpense( expenseid) {
+function deleteExpense(e, expenseid) {
     removeExpensefromUI(expenseid);
-    axios.delete(`https://crudcrud.com/api/e1fa1dda155048b4a77d77c2e3471d82/products/${expenseid}`)
     localStorage.removeItem(expenseid)
 }
 
