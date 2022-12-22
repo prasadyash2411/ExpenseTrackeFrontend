@@ -9,7 +9,7 @@ function addNewExpense(e){
     }
     console.log(expenseDetails)
     // const token  = localStorage.getItem('token')
-    axios.post('https://crudcrud.com/api/892e97cc02c54028a49e690520aed8f4/orders',expenseDetails )
+    axios.post('https://crudcrud.com/api/e1fa1dda155048b4a77d77c2e3471d82/products',expenseDetails )
         .then((response) => {
     localStorage.setItem(response.data._id, JSON.stringify(expenseDetails))
     console.log(response)
@@ -21,7 +21,7 @@ function addNewExpense(e){
 
 
 window.addEventListener('DOMContentLoaded', ()=> {
-    axios.get('https://crudcrud.com/api/892e97cc02c54028a49e690520aed8f4/orders')
+    axios.get('https://crudcrud.com/api/e1fa1dda155048b4a77d77c2e3471d82/products')
     .then(response => {
             response.data.forEach(expense => {
 
@@ -39,14 +39,14 @@ function addNewExpensetoUI(expense){
         <li id=${expenseElemId}>
             ${expense.expenseamount} - ${expense.category} - ${expense.description}
             <button onclick='deleteExpense("${expense._id}")'>
-                Delete Order
+                Delete Product
             </button>
         </li>`
 }
 
 function deleteExpense( expenseid) {
     removeExpensefromUI(expenseid);
-    axios.delete(`https://crudcrud.com/api/892e97cc02c54028a49e690520aed8f4/orders/${expenseid}`)
+    axios.delete(`https://crudcrud.com/api/e1fa1dda155048b4a77d77c2e3471d82/products/${expenseid}`)
     localStorage.removeItem(expenseid)
 }
 

@@ -8,38 +8,37 @@
 </head>
 <body>
     <form onsubmit="addNewExpense(event)">
-        <label for="expenseamount">Choose Price:</label>
+        <label for="expenseamount">Selling Price:</label>
         <input type="number" name="expenseamount" required> </input>
-        <label for="description">Choose Dish:</label>
+        <label for="description">Product Name:</label>
         <input type="text" name="description" required> </input>
-        <label for="category">Choose a Table:</label>
+        <label for="category">Choose a Category:</label>
         <select id="category" name="category">
-            <option value="table1">Table 1</option>
-            <option value="table2">Table 2</option>
-            <option value="table3">Table 3</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Food">Food</option>
+            <option value="Skincare">Skincare</option>
         </select>
-        <button>Add to bill</button>
+        <button>Add Product</button>
     </form>
     <div id="message"></div>
     <h1>
-        Orders
+        Products
     </h1>
     <h2>
-        Table 1
+        Electronic Items
     </h2>
-    <ul id='table1'>
+    <ul id='Electronics'>
     </ul>
     <h2>
-        Table 2
+        Food Items
     </h2>
-    <ul id='table2'>
+    <ul id='Food'>
     </ul>
     <h2>
-        Table 3
+        Skincare Items
     </h2>
-    <ul id='table3'>
+    <ul id='Skincare'>
     </ul>
-    <ul id="leaderboard"></ul>
     <script src='./index.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
