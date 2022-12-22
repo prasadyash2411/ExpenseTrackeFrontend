@@ -8,27 +8,36 @@
 </head>
 <body>
     <form onsubmit="addNewExpense(event)">
-        <label for="expenseamount">Choose expenseamount:</label>
+        <label for="expenseamount">Choose Price:</label>
         <input type="number" name="expenseamount" required> </input>
-        <label for="description">Choose description:</label>
+        <label for="description">Choose Dish:</label>
         <input type="text" name="description" required> </input>
-        <label for="category">Choose a category:</label>
+        <label for="category">Choose a Table:</label>
         <select id="category" name="category">
-            <option value="fuel">fuel</option>
-            <option value="food">food</option>
-            <option value="electricity">electricity</option>
-            <option value="Movie">Movie</option>
+            <option value="table1">Table 1</option>
+            <option value="table2">Table 2</option>
+            <option value="table3">Table 3</option>
         </select>
-        <button>Add Expense</button>
+        <button>Add to bill</button>
     </form>
     <div id="message"></div>
-    <button id="rzp-button1">Buy Premium</button>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <h1>
-        Expenses
+        Orders
     </h1>
-    <ul id='listOfExpenses'>
-
+    <h2>
+        Table 1
+    </h2>
+    <ul id='table1'>
+    </ul>
+    <h2>
+        Table 2
+    </h2>
+    <ul id='table2'>
+    </ul>
+    <h2>
+        Table 3
+    </h2>
+    <ul id='table3'>
     </ul>
     <ul id="leaderboard"></ul>
     <script src='./index.js'></script>
