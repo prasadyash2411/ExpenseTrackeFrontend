@@ -14,33 +14,23 @@
         <input type="number" name="expenseamount" required> </input>
         <label for="description">Product Name:</label>
         <input type="text" name="description" required> </input>
-        <label for="category">Choose a Category:</label>
-        <select id="category" name="category">
+        <!-- <label for="category">Choose a Category:</label> -->
+        <!-- <select id="category" name="category">
             <option value="Electronics">Electronics</option>
             <option value="Food">Food</option>
             <option value="Skincare">Skincare</option>
-        </select>
+        </select> -->
         <button>Add Product</button>
     </form>
     <div id="message"></div>
     <h1>
         Products
     </h1>
-    <h2>
-        Electronic Items
-    </h2>
-    <ul id='Electronics'>
+    <ul id='Products'>
     </ul>
-    <h2>
-        Food Items
-    </h2>
-    <ul id='Food'>
-    </ul>
-    <h2>
-        Skincare Items
-    </h2>
-    <ul id='Skincare'>
-    </ul>
+    <span>
+       <h3 style="display: contents"> Total Value Worth of Products: </h3>
+       Rs <span id="totalValue">0</span>
     <script src='./index.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
